@@ -1,0 +1,11 @@
+docxtpl==0.6.3
+et-xmlfile==1.0.1
+jdcal==1.4.1
+Jinja2==2.10.3
+lxml==4.4.1
+MarkupSafe==1.1.1
+openpyxl==3.0.0
+python-docx==0.8.7
+vnpy==1.9.2
+xlrd==1.2.0
+xlwt==1.3.0

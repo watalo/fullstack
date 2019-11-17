@@ -1,0 +1,80 @@
+格式化输出
+
+占位符:
+%s = string
+%d = digit 整数
+%f = float 浮点数，约等于小数
+
+                name = input("name:")
+                age = input("age:")
+                salary = input("salary:")
+                job = input("job:")
+
+                msg = '''
+                --------------info of %s ----------
+                Name: %s
+                Age : %s
+                Job : %s
+                Salary : %s
+                -----------------end-------------------
+                ''' % (name,name,age,job,salary)
+
+                print(msg)
+
+数据类型
+    数据类型初识
+        数字 2**30 时还是整数
+            整数 int（integer）
+                整型 int
+                长整型 long
+                in py3 已经不区分整型与长整型，统一称为整型
+            浮点 float 大多数情况下是指小数。处理实数和有理数
+            复数 complex由实数和虚数组成，（5+4i），>>>(5+4j)
+        布尔值 只有2种状态 分别是true和false
+        字符串
+            salary.isdigit()
+            计算机中，一起皆为对象
+            世界万物，皆为对象，一切对象皆可分类
+            【 循环loop 】
+                        有限循环
+                        无限循环
+                            for
+                            while
+                            break
+                            continue
+                    ***in py2 range(3): [0,1,2]
+
+            拼接 用 ， 和 +
+        列表，元组(day 5 08 36:47)
+            查：
+                索引（下标），都是从0开始
+                .count 查某个元素的出现次数
+                .index 根据内容找对应位置
+                 "sdds" in a
+            增加
+                .append()
+                .insert(index,"neirong")
+                .extend 扩展
+            修改
+                a[index] = ""
+                a[start:end] = [1,2,3]
+            删除
+                a.remove
+                pop(index) #有一个返还值
+                del a,del a[index]
+                a.clear() 清空
+            排序
+                a.reverse()
+                a.sort()
+
+                b = sorted(a)
+
+            深浅拷贝（后面再讲）
+
+            身份判断
+                type(a) is list
+
+
+
+
+
