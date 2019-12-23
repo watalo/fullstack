@@ -1,0 +1,171 @@
+内容回顾：
+    1、面向对象能解决的问题
+        封装
+            归类：将函数放置到一个类中
+            打包：将数据打包放置一个对象中
+    2、三大特性
+        封装
+        继承
+        多态，Python原生支持多态，崇尚鸭子模型。
+            由于Python函数传参时，无需指定类型
+                def func(arg): # arg可以是多种类型，只要其中有send方法即可
+                    arg.send()
+    3、编写面向对象程序（构造方法）
+        归类 + 提取公共值
+    4、self到底是谁？
+        self参数是帮助我们自动传递。
+        如果执行面向对象中的方法时，前面必须有一个对象：
+        实例化对象
+        obj = Class()
+
+今日内容：
+    1.类的成员（成员分3类：变量、方法、属性）
+        1.1变量（字段）：
+            - 实例变量（字段）
+                - 共有实例变量（字段）
+                - 私有实例变量（字段）
+            - 类变量（静态字段）
+                - 共有类变量（静态字段）
+                - 私有类变量（静态字段）
+            # 知识点一：准则
+                实例变量（字段）访问时，使用对象访问。obj.country
+                类变量（静态字段）访问时，使用类访问。Foo.country
+            # 易错点：
+            # 改一个对象的类变量值，用对象访问
+                obj1.country = '美国'
+                print(obj1.country)
+                print(obj2.country)
+            # 改一个类的变量值，用类访问
+                Foo.country = '美国'
+                print(obj1.country)
+                print(obj2.country)
+            # 知识点二：什么时候用类变量
+                当所有对象中有共同的字段时且同步修改时，可以将实例变量提取成类变量
+        1.2方法：
+            - 实例方法
+                ################ 没必要写实例方法 ############
+                class Foo:
+                    def __init__(self,name):
+                        self.name = name
+
+                    def func(self):
+                        print("没必要用实例方法")
+
+                obj = Foo('1')
+                obj.func()
+                ################ 有必要写实例方法 ############
+                class Foo1:
+                    def __init__(self,name):
+                        self.name = name
+
+                    def func(self):
+                        print(self.name) # 调用了self才有必要用实例方法
+
+                obj1 = Foo1('有必要写实例方法')
+                obj1.func()
+                # ##########################################
+            - 静态方法
+                ################### 静态方法 ################
+                class Foo1:
+                    def __init__(self,name):
+                        self.name = name
+                    # 实例方法（至少有一个方法，self）
+                    def func(self):
+                        print(self.name)
+                    # 静态方法（如果方法中无需使用对象中封装的值没有参数），类似于函数
+                    @staticmethod
+                    def display():
+                        print('666')
+
+                Foo1.display()
+
+                '''
+                总结：
+                    1、编写时：
+                        - 方法上方写 @staticmethod
+                        - 方法参数可有可无
+                    2、调用时
+                        - 类.方法名（） ** 推荐使用
+                        - 对象.方法名（）
+                    3、什么时候用静态方法？
+                        - 无需调用对象中已封装的值
+                '''
+            - 类方法
+                ################### 类方法 ################
+                class Foo3:
+                    def __init__(self,name):
+                        self.name = name
+                    # 实例方法（至少有一个参数，self）
+                    def func(self):
+                        print(self.name)
+                    # 静态方法（如果方法中无需使用对象中封装的值没有参数），类似于函数
+                    @staticmethod
+                    def display():
+                        print('666')
+                    # 类方法(至少有一个参数，cls)
+                        # 不用实例化对象
+                        # 需要用当当期类的时候才用
+                        # 相对于静态方法的一种补充——需要传递类的时候在静态方法中添加 cls 变量
+                    @classmethod
+                    def show(cls,x1,x2):
+                        print(cls,x1,x2)
+
+                Foo3.show(1,2)
+
+                '''
+                总结：
+                    1、定义时：
+                        - 方法上方写：@classmethod
+                        - 方法的参数：至少有一个cls参数
+                    2、执行时：
+                        - 类名.方法名() # 默认会将当前类传递到
+                    3、什么时候用？
+                        - 如果在方法中会使用到当期类，那么就可以使用类方法
+                '''
+        1.3属性：
+            - 编写时
+                - 方法上方写 @property
+                - 方法参数：只有一个self
+            - 调用时：无需加括号 对象.方法
+            - 应用场景:对于简单的方法，当无需传参且有返回值时，可以使用@property
+
+            共有/私有(__ccc)
+
+    2.组合/建模/嵌套
+        class School(object):
+
+            def __init__(self,name,address):
+                self.name = name
+                self.address = address
+
+            def teach(self):
+                pass
+
+            def chifan(self):
+                pass
+
+        obj1 = School('1','a')
+        obj2 = School('2','b')
+        obj3 = School('3','c')
+
+        class Teacher(object):
+
+            def __init__(self,name,age,salary):
+                self.name = name
+                self.age = age
+                self.__salary = salary
+                self.school = None
+
+        t1 = Teacher('alex',22,150000)
+        t2 = Teacher('tony',23,100000)
+        t3 = Teacher('alex',13,11111)
+
+        ######################
+        t1.school = obj1
+        t2.school = obj2
+        t3.school = obj3
+
+        print(t1.school.name)
+        print(t1.school.address)
+        print(t1.name)
+        print(t1.age)
