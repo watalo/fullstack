@@ -11,6 +11,7 @@
 """
 
 
+def show(page,data_list):
 
 
 
