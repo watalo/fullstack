@@ -71,6 +71,6 @@ if __name__ == '__main__':
         # 1. 要查看的页面
         page = int(input('请输入要查看的页码:'))
         obj = Pagenation(data_list, page)
-        # obj.show()
+        obj.show()
         print(obj.show_param())
         break

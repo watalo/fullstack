@@ -1,0 +1,38 @@
+内容回顾
+    1、类的成员(c)
+        - 变量
+            实例变量（字段）
+                - 私有
+                __self.变量名
+            类变量（静态字段）
+                - 私有
+                __变量名
+        - 方法
+            实例方法
+                def foo(self)
+                obj.foo()
+            静态方法
+                @staticmethod
+                def foo():
+                类.foo()  / obj.foo()
+            类方法
+                @classmethod
+                def foo(cls):
+                类.foo()  / obj.foo()
+        - 属性
+            @property
+
+
+        - 私有 成员修饰符 __变量/ def __方法
+        - 共有
+
+    2、嵌套/组合/建模
+
+今日内容：
+    1、组合补充
+
+    2、主动调用其他类的成员
+
+    3、特殊成员
+
+    4、isinstance/issubclass/type
